@@ -1,5 +1,7 @@
 package com.example.species;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,8 +97,8 @@ public class SpeciesApplication implements CommandLineRunner {
 		chat.setCommonName("Chat");
 		chat.setLatinName("Felis silvestris catus");
 		System.out.println(animalRepo.findBySpecies(chat));
-		
-
+		List<String> colors = List.of("Blanc","Noir");
+		System.out.println(animalRepo.findByColorIn(colors));
 
 
 	}

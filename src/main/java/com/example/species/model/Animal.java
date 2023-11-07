@@ -21,13 +21,14 @@ public class Animal {
     @Id
     private Integer id;
     private String name;
+    private String color;
     @Enumerated(EnumType.STRING)
     private AnimalSexe sex;
     @ManyToOne
     @JoinColumn(name = "species_id")
     private Species species;
-    @ManyToMany(mappedBy = "animals") // Utilisez "animals" pour représenter la relation Many-to-Many
-    private List<Person> persons; // Supposons que vous avez une classe "Person" pour représenter les personnes
+    @ManyToMany(mappedBy = "animals") 
+    private List<Person> persons; 
 
 
     public Integer getId() {

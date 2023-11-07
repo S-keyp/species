@@ -11,4 +11,5 @@ import com.example.species.model.Species;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer> { 
     List<Animal> findBySpecies(Species species);
+    List<Animal> findByColorIn(List<String> colors);
 }
