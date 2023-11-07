@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.species.enums.Sex;
 import com.example.species.model.Person;
 import com.example.species.model.Species;
 import com.example.species.repository.AnimalRepository;
@@ -74,6 +75,9 @@ public class SpeciesApplication implements CommandLineRunner {
 
 
 		// REQUETES DERIVEES
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 		// SPECIES REPO
 		System.out.println("-------------------------------");
 		System.out.println("SPECIES Requêtes dérivées");
@@ -99,6 +103,46 @@ public class SpeciesApplication implements CommandLineRunner {
 		System.out.println(animalRepo.findBySpecies(chat));
 		List<String> colors = List.of("Blanc","Noir");
 		System.out.println(animalRepo.findByColorIn(colors));
+
+
+
+
+
+
+
+
+
+		// TP05 Query sur Repo Spring
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println("QUERY sur Repo Spring");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println("");
+		
+		// SPECIES REPO
+		System.out.println("-------------------------------");
+		System.out.println("SPECIES");
+		System.out.println("-------------------------------");
+		System.out.println(speciesRepo.findAllByCommonName("Chat"));
+		System.out.println(speciesRepo.findAllSpeciesCommonNameLike("Ch"));
+		
+		// PERSON REPO
+		System.out.println("-------------------------------");
+		System.out.println("PERSON");
+		System.out.println("-------------------------------");
+		System.out.println(personRepo.findAllByAgeBetween(32, 50));
+		
+		// ANIMAL REPO
+		System.out.println("-------------------------------");
+		System.out.println("ANIMAL");
+		System.out.println("-------------------------------");
+		
+		// System.out.println(animalRepo.getQuantityBySex(Sex.M));
+
 
 
 	}

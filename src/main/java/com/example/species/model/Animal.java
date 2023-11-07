@@ -2,6 +2,8 @@ package com.example.species.model;
 
 import java.util.List;
 
+import com.example.species.enums.Sex;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,17 +15,12 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Animal {
-    private enum AnimalSexe{
-        M,
-        F
-    }
-
     @Id
     private Integer id;
     private String name;
     private String color;
     @Enumerated(EnumType.STRING)
-    private AnimalSexe sex;
+    private Sex sex;
     @ManyToOne
     @JoinColumn(name = "species_id")
     private Species species;
@@ -47,11 +44,11 @@ public class Animal {
         this.name = name;
     }
 
-    public AnimalSexe getAnimalSexe() {
+    public Sex getAnimalSexe() {
         return this.sex;
     }
 
-    public void setAnimalSexe(AnimalSexe animalSexe) {
+    public void setAnimalSexe(Sex animalSexe) {
         this.sex = animalSexe;
     }
 
