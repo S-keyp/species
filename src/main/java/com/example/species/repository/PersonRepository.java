@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     List<Person> findByLastname(String firstName);
+    List<Person> findByLastnameContainsOrFirstnameContains(String lastName, String firstName);
+    List<Person> findByAgeGreaterThanEqual(Integer age);
 }

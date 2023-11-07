@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.species.model.Person;
+import com.example.species.model.Species;
 import com.example.species.repository.AnimalRepository;
 import com.example.species.repository.PersonRepository;
+import com.example.species.repository.SpeciesRepository;
 
 @SpringBootApplication
 public class SpeciesApplication implements CommandLineRunner {
@@ -19,6 +21,8 @@ public class SpeciesApplication implements CommandLineRunner {
 	private AnimalRepository animalRepo;
 	@Autowired
 	private PersonRepository personRepo;
+	@Autowired
+	private SpeciesRepository speciesRepo;;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpeciesApplication.class, args);
@@ -64,6 +68,36 @@ public class SpeciesApplication implements CommandLineRunner {
 
 		System.out.println("findbylastname: Lamarque || ");
 		System.out.println(personRepo.findByLastname("Lamarque"));
+
+
+
+		// REQUETES DERIVEES
+		// SPECIES REPO
+		System.out.println("-------------------------------");
+		System.out.println("SPECIES Requêtes dérivées");
+		System.out.println("-------------------------------");
+		System.out.println(speciesRepo.findFirstBycommonName("Chien"));
+		System.out.println(speciesRepo.findBylatinNameAllIgnoreCaseContains("feLIs"));
+		
+		// PERSON REPO
+		System.out.println("-------------------------------");
+		System.out.println("PERSON Requêtes dérivées");
+		System.out.println("-------------------------------");
+		System.out.println(personRepo.findByLastnameContainsOrFirstnameContains("Nero", "Sylvie"));
+		System.out.println(personRepo.findByAgeGreaterThanEqual(33));
+		
+		// PERSON REPO
+		System.out.println("-------------------------------");
+		System.out.println("ANIMAL Requêtes dérivées");
+		System.out.println("-------------------------------");
+		Species chat = new Species();
+		chat.setId(1);
+		chat.setCommonName("Chat");
+		chat.setLatinName("Felis silvestris catus");
+		System.out.println(animalRepo.findBySpecies(chat));
+		
+
+
 
 	}
 
