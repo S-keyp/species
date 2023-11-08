@@ -67,42 +67,42 @@ public class SpeciesApplication implements CommandLineRunner {
 		
 
 		// READ all persons
-		System.out.println(personRepo.findAll());
+		// System.out.println(personRepo.findAll());
 
-		System.out.println("findbylastname: Lamarque || ");
-		System.out.println(personRepo.findByLastname("Lamarque"));
+		// System.out.println("findbylastname: Lamarque || ");
+		// System.out.println(personRepo.findByLastname("Lamarque"));
 
 
 
 		// REQUETES DERIVEES
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		// System.out.println("");
+		// System.out.println("");
+		// System.out.println("");
 		// SPECIES REPO
-		System.out.println("-------------------------------");
-		System.out.println("SPECIES Requêtes dérivées");
-		System.out.println("-------------------------------");
-		System.out.println(speciesRepo.findFirstBycommonName("Chien"));
-		System.out.println(speciesRepo.findBylatinNameAllIgnoreCaseContains("feLIs"));
+		// System.out.println("-------------------------------");
+		// System.out.println("SPECIES Requêtes dérivées");
+		// System.out.println("-------------------------------");
+		// System.out.println(speciesRepo.findFirstBycommonName("Chien"));
+		// System.out.println(speciesRepo.findBylatinNameAllIgnoreCaseContains("feLIs"));
 		
 		// PERSON REPO
-		System.out.println("-------------------------------");
-		System.out.println("PERSON Requêtes dérivées");
-		System.out.println("-------------------------------");
-		System.out.println(personRepo.findByLastnameContainsOrFirstnameContains("Nero", "Sylvie"));
-		System.out.println(personRepo.findByAgeGreaterThanEqual(33));
+		// System.out.println("-------------------------------");
+		// System.out.println("PERSON Requêtes dérivées");
+		// System.out.println("-------------------------------");
+		// System.out.println(personRepo.findByLastnameContainsOrFirstnameContains("Nero", "Sylvie"));
+		// System.out.println(personRepo.findByAgeGreaterThanEqual(33));
 		
 		// PERSON REPO
-		System.out.println("-------------------------------");
-		System.out.println("ANIMAL Requêtes dérivées");
-		System.out.println("-------------------------------");
-		Species chat = new Species();
-		chat.setId(1);
-		chat.setCommonName("Chat");
-		chat.setLatinName("Felis silvestris catus");
-		System.out.println(animalRepo.findBySpecies(chat));
-		List<String> colors = List.of("Blanc","Noir");
-		System.out.println(animalRepo.findByColorIn(colors));
+		// System.out.println("-------------------------------");
+		// System.out.println("ANIMAL Requêtes dérivées");
+		// System.out.println("-------------------------------");
+		// Species chat = new Species();
+		// chat.setId(1);
+		// chat.setCommonName("Chat");
+		// chat.setLatinName("Felis silvestris catus");
+		// System.out.println(animalRepo.findBySpecies(chat));
+		// List<String> colors = List.of("Blanc","Noir");
+		// System.out.println(animalRepo.findByColorIn(colors));
 
 
 
@@ -113,35 +113,58 @@ public class SpeciesApplication implements CommandLineRunner {
 
 
 		// TP05 Query sur Repo Spring
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		System.out.println("QUERY sur Repo Spring");
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		System.out.println("");
+		// System.out.println("");
+		// System.out.println("");
+		// System.out.println("");
+		// System.out.println("-------------------------------");
+		// System.out.println("-------------------------------");
+		// System.out.println("QUERY sur Repo Spring");
+		// System.out.println("-------------------------------");
+		// System.out.println("-------------------------------");
+		// System.out.println("");
 		
 		// SPECIES REPO
-		System.out.println("-------------------------------");
-		System.out.println("SPECIES");
-		System.out.println("-------------------------------");
-		System.out.println(speciesRepo.findAllByCommonName("Chat"));
-		System.out.println(speciesRepo.findAllSpeciesCommonNameLike("Ch"));
+		// System.out.println("-------------------------------");
+		// System.out.println("SPECIES");
+		// System.out.println("-------------------------------");
+		// System.out.println(speciesRepo.findAllByCommonName("Chat"));
+		// System.out.println(speciesRepo.findAllSpeciesCommonNameLike("Ch"));
 		
 		// PERSON REPO
-		System.out.println("-------------------------------");
-		System.out.println("PERSON");
-		System.out.println("-------------------------------");
-		System.out.println(personRepo.findAllByAgeBetween(32, 50));
+		// System.out.println("-------------------------------");
+		// System.out.println("PERSON");
+		// System.out.println("-------------------------------");
+		// System.out.println(personRepo.findAllByAgeBetween(32, 50));
 		
 		// ANIMAL REPO
 		System.out.println("-------------------------------");
 		System.out.println("ANIMAL");
 		System.out.println("-------------------------------");
 		
-		// System.out.println(animalRepo.getQuantityBySex(Sex.M));
+		System.out.println(animalRepo.getQuantityBySex(Sex.M));
+
+
+
+
+
+
+
+
+
+
+
+		// System.out.println("");
+		// System.out.println("");
+		// System.out.println("");
+		// System.out.println("-------------------------------");
+		// System.out.println("-------------------------------");
+		// System.out.println("QUERY sur Repo Spring");
+		// System.out.println("-------------------------------");
+		// System.out.println("-------------------------------");
+		// System.out.println("");
+		personRepo.deletePersonsWithOutAnimal();
+		System.out.println(personRepo.createPerson("Oink oink"));
+		System.out.println(personRepo.bulkCreateMiguelPerson(10));
 
 
 
