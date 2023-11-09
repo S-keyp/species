@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- <link rel="stylesheet" th:href="@{/css/main.css}" /> -->
+    <meta charset="utf-8">
+    <title>Liste des Espèces</title>
+</head>
+
+<body>
+    <table class="mainTable">
+        <thead>
+            <a th:href="@{'/species/create'}">Ajouter une espèce</a>
+        </thead>
+        <tbody>
+            <tr th:each="speciesItem : ${speciesList}">
+                <td th:text="${speciesItem.commonName}" />
+                <td th:text="${speciesItem.latinName}" />
+                <td><a th:href="@{'/species/' + ${speciesItem.id}}">Modifier</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>

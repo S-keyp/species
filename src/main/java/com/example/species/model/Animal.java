@@ -7,6 +7,8 @@ import com.example.species.enums.Sex;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
@@ -16,6 +18,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Animal {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String color;
@@ -27,6 +30,14 @@ public class Animal {
     @ManyToMany(mappedBy = "animals") 
     private List<Person> persons; 
 
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public Integer getId() {
         return id;
@@ -44,11 +55,11 @@ public class Animal {
         this.name = name;
     }
 
-    public Sex getAnimalSexe() {
+    public Sex getSex() {
         return this.sex;
     }
 
-    public void setAnimalSexe(Sex animalSexe) {
+    public void setSex(Sex animalSexe) {
         this.sex = animalSexe;
     }
 

@@ -9,12 +9,13 @@
 <body>
     <table class="mainTable">
         <thead>
-            <!-- … -->
+            <a th:href="@{'/persons/create'}">Ajouter une personne</a>
         </thead>
         <tbody>
-            <tr th:each="speciesItem : ${speciesList}">
-                <td th:text="${speciesItem.commonName}" />
-                <td th:text="${speciesItem.latinName}" />
+            <tr th:each="personItem : ${personList}">
+                <td th:text="${personItem.firstName}" />
+                <td th:text="${personItem.lastName}" />
+                <td><a th:href="@{'/persons/' + ${personItem.id}}">Modifier</a></td>
             </tr>
         </tbody>
     </table>

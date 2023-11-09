@@ -1,0 +1,16 @@
+<form th:object="${person}" th:action="@{/persons}" th:method="POST">
+    <div>
+        <label for="firstName">Prénom : </label>
+        <input type="text" th:field="*{firstName}" id="firstName" required />
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</span>
+    </div>
+    <div>
+        <label for="lastName">Nom de famille :</label>
+        <input type="text" th:field="*{lastName}" id="lastName" required />
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</span>
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver" />
+        <input type="button" class="button" value="Retour" onclick="window.location='/persons'" required />
+    </div>
+</form>

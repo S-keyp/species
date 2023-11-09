@@ -1,0 +1,14 @@
+<form th:object="${species}" th:action="@{/species}" th:method="POST">
+    <div>
+        <label for="commonName">Nom Commun : </label>
+        <input type="text" th:field="*{commonName}" id="commonName" required />
+    </div>
+    <div>
+        <label for="latinName">Nom latin :</label>
+        <input type="text" th:field="*{latinName}" id="latinName" required />
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver" />
+        <input type="button" class="button" value="Retour" onclick="window.location='/species'" />
+    </div>
+</form>

@@ -2,6 +2,7 @@ package com.example.species.model;
 
 import java.util.List;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Person {
@@ -17,9 +22,19 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Min(0)
+    @Max(120)
     private int age;
+
+    @NotEmpty
+    @Size(max = 50)
     private String firstname;
+
+    @NotEmpty
+    @Size(max = 50)
     private String lastname;
+    
     @ManyToMany
     @JoinTable(name = "person_animals", 
         joinColumns = @JoinColumn(name = "person_id" ),

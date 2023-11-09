@@ -1,0 +1,22 @@
+<form th:object="${animal}" th:action="save" th:method="POST">
+    <div>
+        <label for="name">Nom : </label>
+        <input type="text" th:field="*{name}" id="name" required />
+    </div>
+    <div>
+        <label for="color">Couleur :</label>
+        <input type="text" th:field="*{color}" id="color" required />
+    </div>
+    <div>
+        <label for="sex">Sex :</label>
+        <input th:each="sexvalue: ${sexValues}" type="radio" th:field="*{sex}" th:value="${sexvalue}" th:text="${sexvalue}" id="sex" required />
+    </div>
+    <div>
+        <label for="spieces">Espèce :</label>
+        <input th:each="specie: ${species}" type="radio" th:field="*{species_id}" th:value="${specie}" th:text="${specie}" id="species_id" required />
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver" />
+        <input type="button" class="button" value="Retour" onclick="window.location='/animals'" />
+    </div>
+</form>

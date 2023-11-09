@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- <link rel="stylesheet" th:href="@{/css/main.css}" /> -->
+    <meta charset="utf-8">
+    <title>Liste des Espèces</title>
+</head>
+
+<body>
+    <table class="mainTable">
+        <thead>
+            <a th:href="@{'/animals/create'}">Ajouter un animal</a>
+        </thead>
+        <tbody>
+            <tr th:each="animalItem : ${animalList}">
+                <td th:text="${animalItem.name}" />
+                <td th:text="${animalItem.color}" />
+                <td><a th:href="@{'/animals/' + ${animalItem.id}}">Modifier</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
