@@ -10,12 +10,21 @@
     <table class="mainTable">
         <thead>
             <a th:href="@{'/species/create'}">Ajouter une espèce</a>
+            <a th:href="@{'/'}">Return Home</a>
         </thead>
         <tbody>
             <tr th:each="speciesItem : ${speciesList}">
                 <td th:text="${speciesItem.commonName}" />
                 <td th:text="${speciesItem.latinName}" />
                 <td><a th:href="@{'/species/' + ${speciesItem.id}}">Modifier</a></td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/species/delete}">
+                        <input type="hidden" id="id" name="id" th:value="*{speciesItem.id}">
+                        <button type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

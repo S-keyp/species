@@ -1,3 +1,30 @@
-<input type="hidden" th:field="*{id}" />
-<p><b>Name:</b> <span th:text="${animal.name}"></span><br></p>
-<p><b>Color:</b> <span th:text="${animal.color}"></span></p>
+<form th:object="${animal}" th:action="@{/animals}" th:method="POST">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label for="name">Name : </label>
+        <input type="text" th:field="*{name}" id="name" required />
+    </div>
+    <div>
+        <label for="color">Color :</label>
+        <input type="text" th:field="*{color}" id="color" required />
+    </div>
+    <div>
+        <label for="sex">Sex :</label>
+        <input th:each="sexvalue: ${sexValues}" type="radio" th:field="*{sex}" th:value="${sexvalue}" th:text="${sexvalue}" id="sex" required />
+    </div>
+    <div>
+        <select th:field="*{species}">
+            <option th:each="species : ${species}" th:value="${species.id}" th:text="${species.commonName}">
+        </select>
+    </div>
+    <div>
+        <input type="submit" class="button" value="Sauver" />
+        <input type="button" class="button" value="Retour" onclick="window.location='/animals'" />
+    </div>
+</form>
+<form th:object="${animal}" th:method="DELETE" th:action="@{/animals/delete}">
+    <input type="hidden" id="id" name="id" th:value="*{id}">
+    <button type="submit">
+        Delete
+    </button>
+</form>

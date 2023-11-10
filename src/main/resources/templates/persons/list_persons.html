@@ -3,19 +3,28 @@
 <head>
     <link rel="stylesheet" th:href="@{/css/main.css}" />
     <meta charset="utf-8">
-    <title>Liste des Espèces</title>
+    <title>Bestioles</title>
 </head>
 
 <body>
     <table class="mainTable">
         <thead>
-            <a th:href="@{'/persons/create'}">Ajouter une personne</a>
+            <a th:href="@{'/persons/create'}">Add a new person:</a>
+            <a th:href="@{'/'}">Return Home</a>
         </thead>
         <tbody>
             <tr th:each="personItem : ${personList}">
                 <td th:text="${personItem.firstname}" />
                 <td th:text="${personItem.lastname}" />
                 <td><a th:href="@{'/persons/' + ${personItem.id}}">Modifier</a></td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/persons/delete}">
+                        <input type="hidden" id="id" name="id" th:value="*{personItem.id}">
+                        <button type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

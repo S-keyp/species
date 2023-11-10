@@ -18,7 +18,6 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Animal {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String color;
@@ -30,6 +29,15 @@ public class Animal {
     @ManyToMany(mappedBy = "animals") 
     private List<Person> persons; 
 
+    
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
 
     public String getColor() {
         return color;

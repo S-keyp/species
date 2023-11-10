@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,15 +38,21 @@ public class AnimalController {
 	public String initUpdate(@PathVariable("id") Integer id, Model model) {
 		Optional<Animal> animal = animalRepository.findById(id);
 		if (animal.isPresent()) {
+			List<Species> speciesList = speciesRepository.findAll();
+			
 			model.addAttribute(animal.get());
+			model.addAttribute("species", speciesList);
+			model.addAttribute("sexValues", Sex.values());
+			
 			return "animals/update";
 		}
 		return "error";
 	}
 
-	@PostMapping(name = "save", path= "/save")
-	public String createOrUpdate(Animal animalItem) {
-		animalRepository.save(animalItem);
+	@PostMapping
+	public String createOrUpdate(Animal animal) {
+		System.out.println(animal);
+		animalRepository.save(animal);
 		return "redirect:/animals";
 	}
 
@@ -56,6 +63,13 @@ public class AnimalController {
 		List<Species> speciesList = speciesRepository.findAll();
 		model.addAttribute("species", speciesList);
 		return "animals/add";
+	}
+
+	@DeleteMapping("/delete")
+	public String delete(final Animal animal) {
+		animalRepository.delete(animal);
+
+		return "redirect:/animals";
 	}
     
 }

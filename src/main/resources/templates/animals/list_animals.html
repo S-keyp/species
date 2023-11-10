@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- <link rel="stylesheet" th:href="@{/css/main.css}" /> -->
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
     <meta charset="utf-8">
     <title>Liste des Espèces</title>
 </head>
@@ -10,12 +10,21 @@
     <table class="mainTable">
         <thead>
             <a th:href="@{'/animals/create'}">Ajouter un animal</a>
+            <a th:href="@{'/'}">Return Home</a>
         </thead>
         <tbody>
             <tr th:each="animalItem : ${animalList}">
                 <td th:text="${animalItem.name}" />
                 <td th:text="${animalItem.color}" />
                 <td><a th:href="@{'/animals/' + ${animalItem.id}}">Modifier</a></td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/animals/delete}">
+                        <input type="hidden" id="id" name="id" th:value="*{animalItem.id}">
+                        <button type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

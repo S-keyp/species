@@ -1,4 +1,4 @@
-<form th:object="${animal}" th:action="save" th:method="POST">
+<form th:object="${animal}" th:action="@{/animals}" th:method="POST">
     <div>
         <label for="name">Nom : </label>
         <input type="text" th:field="*{name}" id="name" required />
@@ -12,8 +12,9 @@
         <input th:each="sexvalue: ${sexValues}" type="radio" th:field="*{sex}" th:value="${sexvalue}" th:text="${sexvalue}" id="sex" required />
     </div>
     <div>
-        <label for="spieces">Espèce :</label>
-        <input th:each="specie: ${species}" type="radio" th:field="*{species_id}" th:value="${specie}" th:text="${specie}" id="species_id" required />
+        <select th:field="*{species}">
+            <option th:each="species : ${species}" th:value="${species.id}" th:text="${species.commonName}">
+        </select>
     </div>
     <div>
         <input type="submit" class="button" value="Sauver" />
