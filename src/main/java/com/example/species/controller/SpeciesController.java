@@ -14,50 +14,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.species.model.Species;
 import com.example.species.repository.SpeciesRepository;
+import com.example.species.service.SpeciesService;
 
 @RestController
 @RequestMapping("rest/species")
 public class SpeciesController {
 
     @Autowired
-	private SpeciesRepository speciesRepo;;
+	private SpeciesService speciesService;
 
-    @GetMapping("")
-	public String species(Model model) {
-		List<Species> speciesList = speciesRepo.findAll();
-		model.addAttribute("speciesList", speciesList);
-		return "species/list_species";
-	}
+    // @GetMapping("")
+	// public String species(Model model) {
+	// 	List<Species> speciesList = speciesRepo.findAll();
+	// 	model.addAttribute("speciesList", speciesList);
+	// 	return "species/list_species";
+	// }
 
 	@GetMapping("/{id}")
-	public String initUpdate(@PathVariable("id") Integer id, Model model) {
-		Optional<Species> species = speciesRepo.findById(id);
-		if (species.isPresent()) {
-			model.addAttribute(species.get());
-			return "species/update";
-		}
-		return "error";
+	public Species initUpdate(@PathVariable("id") Integer id) {
+		return speciesService.findById(id);
 	}
 
-	@PostMapping(name="save", path="/save")
-	public String createOrUpdate(Species speciesItem) {
-		speciesRepo.save(speciesItem);
-		return "redirect:/species";
-	}
+	// @PostMapping(name="save", path="/save")
+	// public String createOrUpdate(Species speciesItem) {
+	// 	speciesRepo.save(speciesItem);
+	// 	return "redirect:/species";
+	// }
 
 
-	@GetMapping("/create")
-	public String initCreate(Model model) {
-		model.addAttribute(new Species());
-		return "species/add";
-	}
+	// @GetMapping("/create")
+	// public String initCreate(Model model) {
+	// 	model.addAttribute(new Species());
+	// 	return "species/add";
+	// }
 
-	@DeleteMapping("/delete")
-	public String delete(Species species) {
-		speciesRepo.delete(species);
+	// @DeleteMapping("/delete")
+	// public String delete(Species species) {
+	// 	speciesRepo.delete(species);
 
-		return "redirect:/species";
-	}
+	// 	return "redirect:/species";
+	// }
 
     
 }
