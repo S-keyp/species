@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- <link rel="stylesheet" th:href="@{/css/main.css}" /> -->
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
     <meta charset="utf-8">
     <title>Liste des Espèces</title>
 </head>
@@ -13,8 +13,8 @@
         </thead>
         <tbody>
             <tr th:each="personItem : ${personList}">
-                <td th:text="${personItem.firstName}" />
-                <td th:text="${personItem.lastName}" />
+                <td th:text="${personItem.firstname}" />
+                <td th:text="${personItem.lastname}" />
                 <td><a th:href="@{'/persons/' + ${personItem.id}}">Modifier</a></td>
             </tr>
         </tbody>

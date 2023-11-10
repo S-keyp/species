@@ -25,10 +25,10 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
     public Person createPerson(String name){
         Person person = new Person();
 
-        if (name.equals("")) person.setFirstName("John");
-        else person.setFirstName(name);
+        if (name.equals("")) person.setFirstname("John");
+        else person.setFirstname(name);
         
-        person.setLastName("Doe");
+        person.setLastname("Doe");
         em.persist(person);
         return person;
     }

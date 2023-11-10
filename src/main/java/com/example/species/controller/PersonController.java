@@ -43,11 +43,11 @@ public class PersonController {
 	}
 
 	@PostMapping
-	public String createOrUpdate(@Valid Person personItem, BindingResult result) {
+	public String createOrUpdate(@Valid Person person, BindingResult result) {
 		if(result.hasErrors()) {
 			return "persons/add";
 		} 
-		personRepository.save(personItem);
+		personRepository.save(person);
 		return "redirect:/persons";
 	}
 
