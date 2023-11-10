@@ -2,6 +2,8 @@ package com.example.species.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,8 @@ public class Species {
     private Integer id;
     private String commonName;
     private String latinName;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "species")
     private List<Animal> animals;
 

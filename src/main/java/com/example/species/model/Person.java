@@ -2,6 +2,7 @@ package com.example.species.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +36,7 @@ public class Person {
     @Size(max = 50)
     private String lastname;
     
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "person_animals", 
         joinColumns = @JoinColumn(name = "person_id" ),
