@@ -31,7 +31,7 @@ public class SpeciesController {
 	}
 
 	@GetMapping("/{id}")
-		public String initUpdate(@PathVariable("id") Integer id, Model model) {
+	public String initUpdate(@PathVariable("id") Integer id, Model model) {
 		Optional<Species> species = speciesRepo.findById(id);
 		if (species.isPresent()) {
 			model.addAttribute(species.get());
@@ -40,15 +40,15 @@ public class SpeciesController {
 		return "error";
 	}
 
-	@PostMapping
-		public String createOrUpdate(Species speciesItem) {
+	@PostMapping(name="save", path="/save")
+	public String createOrUpdate(Species speciesItem) {
 		speciesRepo.save(speciesItem);
 		return "redirect:/species";
 	}
 
 
 	@GetMapping("/create")
-		public String initCreate(Model model) {
+	public String initCreate(Model model) {
 		model.addAttribute(new Species());
 		return "species/add";
 	}
