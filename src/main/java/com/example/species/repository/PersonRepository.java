@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.species.model.Animal;
 import com.example.species.model.Person;
 import java.util.List;
 
@@ -21,7 +20,4 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, Person
         @Param("age1") Integer age1, 
         @Param("age2") Integer age2
     );
-
-    // @Query("from Person inner join Animal on ")
-    // List<Person> findPersonByAnimal(@Param("animal.id") Animal animal);
 }
