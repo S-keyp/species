@@ -17,18 +17,22 @@ public class PersonService {
     PersonRepository personRepository;
 
     public Person create(@Valid Person personToCreate) {
-        return this.personRepository.save(personToCreate);
+        return personRepository.save(personToCreate);
     }
 
     public Person update(@Valid Person updatedPerson) {
-        return this.personRepository.save(updatedPerson);
+        return personRepository.save(updatedPerson);
     }
 
     public Page<Person> findAll(Pageable pageable) {
-        return this.personRepository.findAll(pageable);
+        return personRepository.findAll(pageable);
     }
 
     public Person findById(Integer id) {
-        return this.personRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return personRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void deleteById(Integer id) {
+        personRepository.delete(findById(id));
     }
 }

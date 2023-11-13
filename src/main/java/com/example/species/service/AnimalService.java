@@ -31,4 +31,8 @@ public class  AnimalService {
     public Animal findById(Integer id) {
         return this.animalRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
+
+    public void deleteById(Integer id) {
+        animalRepository.delete(findById(id));
+    }
 }

@@ -33,7 +33,6 @@ public class SpeciesService {
     }
 
     public void deleteById(Integer id) {
-        Species a = findById(id);
-        speciesRepository.delete(a);
+        speciesRepository.delete(findById(id));
     }
 }

@@ -36,6 +36,11 @@ public class SpeciesController {
 		speciesService.create(species);
 	}
 
+	// @PostMapping(path="/update/{id}")
+	// public void update(Person person) {
+	// 	personService.update(person);
+	// }
+
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		speciesService.deleteById(id);
