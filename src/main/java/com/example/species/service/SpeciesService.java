@@ -17,18 +17,23 @@ public class SpeciesService {
     SpeciesRepository speciesRepository;
 
     public Species create(@Valid Species speciesToCreate) {
-        return this.speciesRepository.save(speciesToCreate);
+        return speciesRepository.save(speciesToCreate);
     }
 
     public Species update(@Valid Species updatedSpecies) {
-        return this.speciesRepository.save(updatedSpecies);
+        return speciesRepository.save(updatedSpecies);
     }
 
     public Page<Species> findAll(Pageable pageable) {
-        return this.speciesRepository.findAll(pageable);
+        return speciesRepository.findAll(pageable);
     }
 
     public Species findById(Integer id) {
-        return this.speciesRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return speciesRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void deleteById(Integer id) {
+        Species a = findById(id);
+        speciesRepository.delete(a);
     }
 }

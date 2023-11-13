@@ -28,12 +28,7 @@ public class PersonController {
 
 	@GetMapping("/{id}")
 	public Person initUpdate(@PathVariable("id") Integer id) {
-		return personService.findById(id);
-		// Optional<Person> person = personRepository.findById(id);
-		// if (person.isPresent()) {
-		// 	return person.get();
-		// }
-		
+		return personService.findById(id);		
 	}
 
 	// @PostMapping

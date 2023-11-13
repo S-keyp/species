@@ -41,7 +41,7 @@ public class Person {
     @JoinTable(name = "person_animals", 
         joinColumns = @JoinColumn(name = "person_id" ),
         inverseJoinColumns = @JoinColumn(name = "animals_id")
-    ) // Nom de la table de jointure si nécessaire
+    )
     @Column(name = "id_person")
     private List<Animal> animals;
     

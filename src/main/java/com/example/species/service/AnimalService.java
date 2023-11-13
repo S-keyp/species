@@ -12,7 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 @Service
-public class AnimalService {
+public class  AnimalService {
     @Autowired
     AnimalRepository animalRepository;
 
