@@ -1,3 +1,4 @@
+
 package com.example.species;
 
 
@@ -47,12 +48,12 @@ public class SpeciesApplication implements CommandLineRunner{
 		System.out.println("%d".formatted(personRepo.findAll().size()));
 
 		// CREATE (Revive Henry?)
-		Person person2 = new Person();
-		person2.setAge(22);
-		person2.setId(1);
-		person2.setFirstName("Henry");
-		person2.setLastName("Lamarque");
-		personRepo.save(person2);
+		// Person person2 = new Person();
+		// person2.setAge(22);
+		// person2.setId(1);
+		// person2.setFirstName("Henry");
+		// person2.setLastName("Lamarque");
+		// personRepo.save(person2);
 
 		// SELECT
 		Optional<Person> person3 = personRepo.findById(1);
@@ -84,7 +85,7 @@ public class SpeciesApplication implements CommandLineRunner{
 		System.out.println("-------------------------------");
 		System.out.println(speciesRepo.findFirstBycommonName("Chien"));
 		System.out.println(speciesRepo.findBylatinNameAllIgnoreCaseContains("feLIs"));
-// 
+
 		// PERSON REPO
 		System.out.println("-------------------------------");
 		System.out.println("PERSON Requêtes dérivées");
