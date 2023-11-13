@@ -1,10 +1,9 @@
-<form th:object="${person}" th:action="@{/persons}" th:method="POST">
+<form th:object="${person}" th:action="@{/persons/save}" th:method="POST">
+    <input type="hidden" th:field="*{id}">
     <div>
         <label for="firstname">Prénom : </label>
         <input type="text" th:field="*{firstname}" id="firstname" required />
         <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error</span>
-        <!-- <span th:if="${#fields.hasAnyErrors()}" th:text="${#fields.allErrors()}"> </span> -->
-        <!-- <span th:if="${#fields.hasAnyErrors()}" th:text="${#fields.hasErrors('firstname')}"> </span> -->
     </div>
     <div>
         <label for="lastname">Nom de famille :</label>

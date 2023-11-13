@@ -13,13 +13,13 @@
             <a th:href="@{'/'}">Return Home</a>
         </thead>
         <tbody>
-            <tr th:each="animalItem : ${animalList}">
-                <td th:text="${animalItem.name}" />
-                <td th:text="${animalItem.color}" />
-                <td><a th:href="@{'/animals/' + ${animalItem.id}}">Modifier</a></td>
+            <tr th:each="animal : ${animalList}">
+                <td th:text="${animal.name}" />
+                <td th:text="${animal.color}" />
+                <td><a th:href="@{'/animals/' + ${animal.id}}">Modifier</a></td>
                 <td>
-                    <form th:method="DELETE" th:action="@{/animals/delete}">
-                        <input type="hidden" id="id" name="id" th:value="*{animalItem.id}">
+                    <form th:object="${animal}" th:method="DELETE" th:action="@{/animals/delete}">
+                        <input type="hidden" id="id" name="id" th:value="*{id}">
                         <button type="submit">
                             Delete
                         </button>

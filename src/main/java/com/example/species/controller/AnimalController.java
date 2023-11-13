@@ -49,7 +49,7 @@ public class AnimalController {
 		return "error";
 	}
 
-	@PostMapping
+	@PostMapping(name="save", path="/save")
 	public String createOrUpdate(Animal animal) {
 		System.out.println(animal);
 		animalRepository.save(animal);
@@ -65,7 +65,7 @@ public class AnimalController {
 		return "animals/add";
 	}
 
-	@DeleteMapping("/delete")
+	@DeleteMapping(name="delete", path="/delete")
 	public String delete(final Animal animal) {
 		animalRepository.delete(animal);
 

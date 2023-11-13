@@ -12,7 +12,7 @@ import jakarta.persistence.OneToMany;
 public class Species {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String commonName;
     private String latinName;

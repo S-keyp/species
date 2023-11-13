@@ -13,10 +13,3 @@
         <input type="button" class="button" value="Retour" onclick="window.location='/animals'" />
     </div>
 </form>
-<form th:object="${species}" th:method="DELETE" th:action="@{/species/delete}">
-    <input type="hidden" id="id" name="id" th:value="*{id}">
-
-    <button type="submit">
-        Delete
-    </button>
-</form>

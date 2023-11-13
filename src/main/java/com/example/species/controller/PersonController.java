@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.species.model.Animal;
 import com.example.species.model.Person;
 import com.example.species.repository.PersonRepository;
 
@@ -43,7 +42,7 @@ public class PersonController {
 		return "error";
 	}
 
-	@PostMapping
+	@PostMapping(name="save", path="/save")
 	public String createOrUpdate(@Valid Person person, BindingResult result) {
 		if(result.hasErrors()) {
 			return "persons/add";
@@ -58,7 +57,7 @@ public class PersonController {
 		return "persons/add";
 	}
 
-	@DeleteMapping("/delete")
+	@DeleteMapping(name="delete", path="/delete")
 	public String delete(Person person) {
 		personRepository.delete(person);
 
