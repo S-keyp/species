@@ -28,4 +28,17 @@
             </tr>
         </tbody>
     </table>
+    <form th:method="POST" th:action="@{/persons/create10}">
+		<input type="hidden" name="count" value="15">
+
+		<button type="submit">
+			Generate 10 Miguel
+		</button>
+	</form>
+
+	<form th:method="DELETE" th:action="@{/persons/delete-without-pets}">
+		<button type="submit">
+			Delete persons without pets
+		</button>
+	</form>
 </body>

@@ -22,6 +22,4 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, Person
         @Param("age2") Integer age2
     );
 
-    // @Query("from Person inner join Animal on ")
-    // List<Person> findPersonByAnimal(@Param("animal.id") Animal animal);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.species.model.Person;
 import com.example.species.repository.PersonRepository;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @Controller
@@ -60,6 +61,21 @@ public class PersonController {
 	@DeleteMapping(name="delete", path="/delete")
 	public String delete(Person person) {
 		personRepository.delete(person);
+
+		return "redirect:/persons";
+	}
+
+	@PostMapping(name="create10", path="/create10")
+	public String bulkCreate(final int count) {
+		personRepository.bulkCreateMiguelPerson(count);
+
+		return "redirect:/persons";
+	}
+
+	@DeleteMapping(name="deleteWOPets", path="/delete-without-pets")
+	@Transactional
+	public String deleteWithoutPets() {
+		personRepository.deletePersonsWithOutAnimal();
 
 		return "redirect:/persons";
 	}

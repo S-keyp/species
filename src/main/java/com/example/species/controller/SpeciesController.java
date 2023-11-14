@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.species.model.Person;
 import com.example.species.model.Species;
 import com.example.species.repository.SpeciesRepository;
 
