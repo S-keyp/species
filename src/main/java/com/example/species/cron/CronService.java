@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CronService {
 
-    @Scheduled(cron = "${cron.test}")
+    @Scheduled(cron = "${cron.value}")
 	public void cron(){
         System.out.println("Cronnnnn");
 	}
