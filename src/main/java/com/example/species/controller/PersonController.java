@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.species.model.Person;
@@ -44,7 +45,7 @@ public class PersonController {
 	}
 
 	@PostMapping(name="save", path="/save")
-	public String createOrUpdate(@Valid Person person, BindingResult result) {
+	public String createOrUpdate (@Valid Person person, BindingResult result) {
 		if(result.hasErrors()) {
 			return "persons/add";
 		} 
