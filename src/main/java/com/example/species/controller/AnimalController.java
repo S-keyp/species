@@ -3,6 +3,7 @@ package com.example.species.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.species.model.Animal;
@@ -36,6 +38,14 @@ public class AnimalController {
 	@PostMapping(path="/save")
 	public void create(@RequestBody Animal animal) {
 		animalService.create(animal);
+	}
+
+	// Second method to get a page with get params
+	@GetMapping("/pages")
+	public Page<Animal> findPage(
+			@RequestParam(value = "pageNumber", defaultValue = "0") Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize){
+		return animalService.findPage(PageRequest.of(pageNumber, pageSize));
 	}
 
 	// @PostMapping(path="/update/{id}")

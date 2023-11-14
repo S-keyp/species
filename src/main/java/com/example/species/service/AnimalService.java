@@ -17,20 +17,24 @@ public class  AnimalService {
     AnimalRepository animalRepository;
 
     public Animal create(@Valid Animal animalToCreate) {
-        return this.animalRepository.save(animalToCreate);
+        return animalRepository.save(animalToCreate);
     }
 
     public Animal update(@Valid Animal updatedAnimal) {
-        return this.animalRepository.save(updatedAnimal);
+        return animalRepository.save(updatedAnimal);
     }
 
     public Page<Animal> findAll(Pageable pageable) {
-        return this.animalRepository.findAll(pageable);
+        return animalRepository.findAll(pageable);
     }
 
     public Animal findById(Integer id) {
-        return this.animalRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return animalRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
+
+    public Page<Animal> findPage(Pageable pageable){
+		return animalRepository.findAll(pageable);
+	}
 
     public void deleteById(Integer id) {
         animalRepository.delete(findById(id));

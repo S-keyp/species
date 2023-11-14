@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.species.model.Person;
 import com.example.species.model.Species;
 import com.example.species.repository.SpeciesRepository;
 
@@ -31,6 +32,10 @@ public class SpeciesService {
     public Species findById(Integer id) {
         return speciesRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
+
+    public Page<Species> findPage(Pageable pageable){
+		return speciesRepository.findAll(pageable);
+	}
 
     public void deleteById(Integer id) {
         speciesRepository.delete(findById(id));
