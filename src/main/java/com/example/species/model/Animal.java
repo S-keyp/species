@@ -39,7 +39,6 @@ public class Animal {
         cascade = { CascadeType.PERSIST}
     ) 
     private List<Person> persons; 
-    
 
     public Species getSpecies() {
         return species;
@@ -92,6 +91,14 @@ public class Animal {
     @Override
     public String toString() {
         return "Animal [id=" + id + ", name=" + name + "]";
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
     }
 
 }
