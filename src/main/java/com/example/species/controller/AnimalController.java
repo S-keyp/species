@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.species.dto.AnimalDto;
 import com.example.species.model.Animal;
 import com.example.species.service.AnimalService;
 
@@ -35,17 +36,23 @@ public class AnimalController {
 		return this.animalService.findById(id);
 	}
 
-	@PostMapping(path="/save")
-	public void create(@RequestBody Animal animal) {
-		animalService.create(animal);
-	}
+	// @PostMapping(path="/save")
+	// public void create(@RequestBody Animal animal) {
+	// 	animalService.create(animal);
+	// }
 
 	// Second method to get a page with get params
-	@GetMapping("/pages")
-	public Page<Animal> findPage(
-			@RequestParam(value = "pageNumber", defaultValue = "0") Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize){
-		return animalService.findPage(PageRequest.of(pageNumber, pageSize));
+	@GetMapping("/page")
+	public Page<AnimalDto> findPage(
+			@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "25") int pageSize
+		){
+		return animalService.findPage(
+			PageRequest.of(
+				pageNumber, 
+				pageSize
+			)
+		);
 	}
 
 	// @PostMapping(path="/update/{id}")
@@ -53,8 +60,8 @@ public class AnimalController {
 	// 	animalService.update(animal);
 	// }
 
-	@DeleteMapping(path="/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		animalService.deleteById(id);
-	}
+	// @DeleteMapping(path="/delete/{id}")
+	// public void delete(@PathVariable("id") Integer id) {
+	// 	animalService.deleteById(id);
+	// }
 }
